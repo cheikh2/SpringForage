@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout.html">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Liste des clients</title>
+</head>
+<body>
+<div layout:fragment="content">
+<div class="container col-md-5 col-xs-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Liste des clients</div>
+        <div class="panel-body">
+            <table class="table table-bordered">
+    <tr>
+        <th>ID</th><th>Prenom</th><th>Nom</th><th>Adress</th><th>Telephone</th>
+        <th>Village</th><th>Action</th><th>Action</th>
+        </tr>
+            </thead>
+                <tbody>
+                    <tr th:each="c:${listClients}">
+                        <td th:text="${c.id}"></td>
+                        <td th:text="${c.prenom}"></td>
+                        <td th:text="${c.nom}"></td>
+                        <td th:text="${c.adress}"></td>
+                        <td th:text="${c.telephone}"></td>
+                        <td th:text="${c.village.libelle}"></td>
+                        <td><a th:href="@{edit(id=${c.id})}">Editer</a></td>
+                        <td><a onclick="return confirm('Etes vous sûre ?')" th:href="@{delete(id=${c.id})}">Supprimer</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--div>
+        <ul class="nav nav-pills">
+            <li th:class="${pageCourant}==${status.index}?'active':''" th:each="pa,status:${pages}">
+                <a th:href="@{index(page=${status.index},size=${size})}" th:text="${status.index}"></a>
+            </li>
+        </ul>
+    </div-->
+</div>
+</div>
+</body>
+</html>

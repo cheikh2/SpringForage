@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout.html">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Liste des clients</title>
+    <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div layout:fragment="content">
+<div class="container col-md-5 col-xs-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Liste des villages</div>
+        <div class="panel-body">
+            <table class="table table-bordered">
+                <tr>
+                    <th>ID</th><th>Libelle</th><th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="v:${listVillages}">
+                    <td th:text="${v.id}"></td>
+                    <td th:text="${v.libelle}"></td>
+                    <td><a onclick="return confirm('Etes vous sûre ?')" th:href="@{delete1(id=${v.id})}">Supprimer</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

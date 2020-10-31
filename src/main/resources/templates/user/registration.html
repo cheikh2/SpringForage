@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout.html">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Registration</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <!-- success message -->
+    <div th:if="${param.success}">
+        <div class="alert alert-info">Inscription réussie</div>
+    </div>
+
+    <div class="container col-md-5 col-md-offset-1">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Registration</div>
+            <div class="panel-body">
+                <form th:action="@{registration}" method="post" th:object="${user}">
+                    <div class="form-group">
+                        <label class="control-label">Prenom</label>
+                        <input class="form-control" id="prenom" th:field="*{prenom}"
+                        required autofocus="autofocus"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Nom</label>
+                        <input class="form-control" id="nom" th:field="*{nom}"
+                               required autofocus="autofocus"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Email </label>
+                        <input class="form-control" id="email" th:field="*{email}"
+                               required autofocus="autofocus"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Password</label>
+                        <input class="form-control" id="password" th:field="*{password}"
+                               required autofocus="autofocus"/>
+                    </div>
+                    <button type="submit" class="btn btn-success">Register</button>
+                    <span>Déja inscrit<a href="/" th:href="@{/login}">Se connecter</a></span>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

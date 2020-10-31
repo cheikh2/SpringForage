@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout.html">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Liste des clients</title>
+</head>
+<body>
+<div layout:fragment="content">>
+<div class="container col-md-5 col-md-offset-1">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Ajouter clients</div>
+        <div class="panel-body">
+            <form th:action="@{save}" method="post">
+                <div class="form-group">
+                    <label class="control-label">ID</label>
+                    <input class="form-control" type="text" name="id"
+                           th:value="${client.id}"/>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Prenom</label>
+                    <input class="form-control" type="text" name="prenom"
+                           th:value="${client.prenom}"/>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Nom</label>
+                    <input class="form-control" type="text" name="nom"
+                           th:value="${client.nom}"/>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Adresse</label>
+                    <input class="form-control" type="text" name="adress"
+                           th:value="${client.adress}"/>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Telephone</label>
+                    <input class="form-control" type="text" name="telephone"
+                           th:value="${client.telephone}"/>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Village</label>
+                    <input class="form-control" type="number" name="village"
+                           th:value="${client.village}"/>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Ajouter</button>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>
