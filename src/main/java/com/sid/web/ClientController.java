@@ -1,7 +1,9 @@
 package com.sid.web;
 
 import com.sid.dao.ClientRepository;
+import com.sid.dao.VillageRepository;
 import com.sid.entities.Client;
+import com.sid.entities.Village;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,8 @@ import java.util.Optional;
 public class ClientController {
     @Autowired
     private ClientRepository clientRepository;
+    @Autowired
+    private VillageRepository villageRepository;
 
     @RequestMapping(value="client")
     public String allClient(Model model){
@@ -47,6 +51,8 @@ public class ClientController {
     // chargement du formulaire d'ajout de client
     @RequestMapping(value="/form", method = RequestMethod.GET)
     public String addClient(Model model){
+        List<Village> villages=villageRepository.findAll();
+        model.addAttribute("villages", villages);
         model.addAttribute("client", new Client());
         return "client/addClient";
     }

@@ -11,5 +11,8 @@ public class MainController {
         return "user/login";
     }
 
-
+    @GetMapping("/")
+    public String home(){
+        return "index";
+    }
 }

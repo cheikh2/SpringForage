@@ -35,8 +35,9 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label">Village</label>
-                    <input class="form-control" type="number" name="village"
-                           th:value="${client.village}"/>
+                    <select class="form-control" name="village" >
+                        <option value="" >Faite votre choix</option>
+                        <option th:each="v:${villages}" th:text="${v.libelle}" th:value="${v.id}"></option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Ajouter</button>
